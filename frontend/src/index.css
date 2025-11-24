@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: "NowRegular";
+  src: url("./assets/fonts/NowRegular.otf");
+}
+
+@font-face {
+  font-family: "Polea";
+  src: url('./assets/fonts/Polea\ Extra\ Bold\ DEMO.otf');
+}
+
+.app_main{
+  font-family: "NowRegular";
+}
+
+.app_title{
+  font-family: "Polea";
+}

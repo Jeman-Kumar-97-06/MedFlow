@@ -3,6 +3,7 @@ import Dashboard from "./components/HomePage"
 import Landing from "./components/LandingPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import PatientDashboard from "./components/PatientHome"
+import HospitalStaffDashboard from "./components/StaffHome"
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <Routes>
           <Route exact path='/' element = {<Landing/>} />
           <Route exact path='/auth' element = {<AuthPage/>} />
-          <Route exact path='/db' element = {<><Dashboard/><PatientDashboard/></>} />
+          <Route exact path='/db' element = {<><Dashboard/><PatientDashboard/><HospitalStaffDashboard/></>} />
         </Routes>
       </BrowserRouter>
     </div>

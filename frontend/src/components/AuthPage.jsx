@@ -76,7 +76,8 @@ const RoleSelector = ({ selected, onSelect }) => {
     <div className="flex gap-4 mb-6">
       {[
         { id: 'patient', label: 'Patient', icon: User },
-        { id: 'doctor', label: 'Doctor', icon: Stethoscope }
+        { id: 'doctor', label: 'Doctor', icon: Stethoscope },
+        { id: 'staff', label: 'Staff', icon: User }
       ].map((role) => {
         const isSelected = selected === role.id;
         return (

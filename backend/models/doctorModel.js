@@ -43,6 +43,32 @@ doctorSchema.statics.signup = async function(name,email,phone,password,specializ
     if (!validator.isStrongPassword(password)){
         throw Error("Password not strong enough!")
     }
+    //see if the email already exists:
+    const exists = this.findOne({email});
+    if(exists){
+      throw Error("Email Already Exists!")
+    };
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password,salt);
+    const user = await this.create({name,email,phone,password:hash,specialization,experience,availableSlots,role});
+    return user;
+}
+
+doctorSchema.statics.login = async function(email,password){
+  if(!email || !password){
+    throw Error("All fields must be filled");
+  }
+  //See if the user with the given email exists:
+  const user = await this.findOne({email:email});
+  if (!user) {
+    throw Error("No User with the given email")
+  }
+  //See if the given password is right:
+  const match = await bcrypt.compare(password,user.password);
+  if (!match) {
+    throw Error("Incorrect Password");
+  }
+  return user;
 }
 
 export default mongoose.model("crmdoctor", doctorSchema);
